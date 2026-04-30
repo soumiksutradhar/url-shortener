@@ -1,0 +1,7 @@
+infra/virenv/
+*.tfstate
+*.tfstate.backup
+.terraform/
+venv/
+*.pem
+inventory.ini
