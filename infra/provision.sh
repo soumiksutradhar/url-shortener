@@ -7,7 +7,7 @@ terraform apply -auto-approve
 
 echo "--->Fetching instance public IP<---"
 public_ip=$(terraform output -raw aws_instance_public_ip)
-echo "IP fetched: $public_ip"
+echo "--->IP fetched: $public_ip<---"
 
 echo "--->Updating Ansible inventory<---"
 cat > inventory.ini << EOF
