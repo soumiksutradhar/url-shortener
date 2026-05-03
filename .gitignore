@@ -1,4 +1,4 @@
-infra/virenv/
+virenv/
 *.tfstate
 *.tfstate.backup
 .terraform/
