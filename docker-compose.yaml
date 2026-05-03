@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15  # uses pre-built image postgres:15 for db service
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: expensedb
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: ./app/api  # explicitly uses the Dockerfile present in /app/api
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/expensedb
+    depends_on:  # db service must be running first in order for api service to run
+      - db
+
+  frontend:
+    build:
+      context: ./app/frontend  # explicitly uses the Dockerfile present in /app/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:  # api service must be running first in order for frontend service to run
+      - api

@@ -3,6 +3,7 @@ from flask_cors import CORS
 from models import db, Expense
 from datetime import datetime
 import os
+import time
 
 app = Flask(__name__)
 CORS(app)
@@ -12,8 +13,21 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-with app.app_context():
-    db.create_all()
+def connect_with_retry():
+	retries = 5
+	while retries > 0:
+		try:
+			with app.app_context():
+				db.create_all()
+				print("Database connected successfully")
+				return
+		except Exception as e:
+			print(f"Database not ready, retrying in 5 seconds... ({e})")
+			retries -= 1
+			time.sleep(5)
+	raise Exception("Could not connect to database after retries")
+
+connect_with_retry()
 
 @app.route('/expenses', methods=['GET'])
 def get_expenses():
