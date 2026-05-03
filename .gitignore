@@ -2,6 +2,8 @@ virenv/
 *.tfstate
 *.tfstate.backup
 .terraform/
-venv/
 *.pem
 inventory.ini
+__pycache__/
+*.pyc
+.env
