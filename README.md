@@ -1,8 +1,8 @@
-# DevOps Pipeline Forge 🚀
+# DevOps Pipeline Forge
 
-A production-grade CI/CD pipeline demonstrating the full software delivery lifecycle — from code push to automated deployment on Kubernetes, with IAC and live monitoring.
+This is a production-grade CI/CD pipeline demonstrating the full software delivery lifecycle, right from code push to automated deployment on Kubernetes with IAC and live monitoring.
 
-Built as a hands-on DevOps portfolio project using a simple 3-tier expense tracker application as the vehiclek, built using PostgreSQL, Flask and simple HTML/JS.
+It was built based on a simple 3-tier expense tracker application built using PostgreSQL, Flask and simple HTML/JS.
 
 ---
 
@@ -12,10 +12,10 @@ Infrastructure is provisioned with **Terraform** and configured with **Ansible**
 
 ## Application
 
-A simple **3-tier expense tracker**:
-- **Frontend** — static HTML/JS served via Nginx; lets users add and view expenses
-- **API** — Python/Flask REST backend; handles CRUD operations
-- **Database** — PostgreSQL; persists expense records
+A simple **3-tier expense tracker**:-
+- **Frontend** —> static HTML/JS served via Nginx; lets users add and view expenses
+- **API** —> Python/Flask REST backend; handles CRUD operations
+- **Database** —> PostgreSQL; persists expense records
 
 The application itself is quite simple as the focus of this project is entirely on the DevOps infrastructure around it.
 
