@@ -1,6 +1,6 @@
-# DevOps Pipeline Forge
+# Budget Bank
 
-This is a production-grade CI/CD pipeline demonstrating the full software delivery lifecycle, right from code push to automated deployment on Kubernetes with IAC and live monitoring.
+Budget Bank is a production-grade CI/CD pipeline forged to demonstrate the full software delivery lifecycle, right from code push to automated deployment on Kubernetes with IAC and live monitoring.
 
 It was built based on a simple 3-tier expense tracker application built using PostgreSQL, Flask and simple HTML/JS.
 
