@@ -3,15 +3,15 @@ kind: Ingress
 metadata:
   name: expense-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /  # with this, Flask sees /api/expenses as just /expenses
+    nginx.ingress.kubernetes.io/rewrite-target: /$2  # with this, Flask sees /api/expenses as just /expenses
 spec:
   ingressClassName: nginx  # through this, Kubernetes knows which Ingress controller owns this rule
   rules:
     - host: expense.local
       http:
         paths:
-          - path: /api
-            pathType: Prefix  # matches any path starting with the given string -> /api in this case
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific  # matches any path starting with the given string -> /api in this case
             backend:
               service:
                 name: api

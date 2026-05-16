@@ -1,4 +1,4 @@
-apiVersion: v1  # Deployment API group lives in apps/v1
+apiVersion: apps/v1  # Deployment API group lives in apps/v1
 kind: Deployment
 metadata:
   name: api  # how kubectl identifies this Deployment
