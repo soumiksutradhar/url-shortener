@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: budget-bank-frontend:latest
+          image: devops-pipeline-forge-frontend:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 80
