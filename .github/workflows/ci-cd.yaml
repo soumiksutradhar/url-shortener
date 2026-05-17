@@ -1,0 +1,35 @@
+name: CI/CD Pipeline  # name is a top-level field
+
+on:  # on is another top-level field
+  push:
+    branches:
+      - main
+
+jobs:  # jobs is the 3rd top-level field
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # clones repo onto the runner(fresh VM); this is an official pre-built GH action from the GH marketplace
+      - name: DockerHub login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # these values are evaluated at runtime
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: Build and push API image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./app/api  # api Dockerfile present here
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/budget-bank-api:latest
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./app/frontend  # frontend Dockerfile present here
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME}}/budget-bank-frontend:latest
+    
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
