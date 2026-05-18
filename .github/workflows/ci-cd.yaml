@@ -33,3 +33,5 @@ jobs:  # jobs is the 3rd top-level field
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Placeholder
+        run: echo "A temporary placeholder for the deploy job"
